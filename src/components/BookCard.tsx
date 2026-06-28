@@ -31,12 +31,12 @@ export default function BookCard({
       )}
 
       <p className="font-medium">{book.title}</p>
-      <p className="font-sm">
+      <p className="text-sm">
         {book.author}
         {book.first_publish_year ? ` . ${book.first_publish_year}` : ""}
       </p>
 
-      <p className="text-sm">Status: ${book.status}</p>
+      <p className="text-sm">Status: {book.status}</p>
 
       <div className="flex gap-2">
         <button
@@ -45,6 +45,16 @@ export default function BookCard({
           className="border px-2 py-0.5 text-sm"
         >
           Back
+        </button>
+      </div>
+
+      <div className="flex gap-2">
+        <button
+          onClick={() => onChangeStatus(book.id, +1)} 
+          disabled={!canGoForward}
+          className="border px-2 py-0.5 text-sm"
+        >
+          Forward
         </button>
       </div>
 
