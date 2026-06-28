@@ -38,7 +38,7 @@ export default function BookCard({
 
       <p className="text-sm">Status: {book.status}</p>
 
-      <div className="flex gap-2">
+      <div className="flex gap-2 mb-1">
         <button
           onClick={() => onChangeStatus(book.id, -1)}
           disabled={!canGoBack}

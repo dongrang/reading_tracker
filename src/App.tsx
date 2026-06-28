@@ -5,9 +5,8 @@ import SearchBar from "./components/SearchBar";
 import StatsBar from "./components/StatsBar";
 import BookCard from "./components/BookCard";
 
+// persistence
 const STORAGE_KEY = "book-tracker:library";
-
-// json persistance 
 function loadLibrary(): LibraryBook[] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -20,6 +19,20 @@ function loadLibrary(): LibraryBook[] {
   }
 }
 
+// dark mode
+const THEME_KEY = "book-tracker:theme";
+function loadTheme(): "light" | "dark" {
+  try {
+    const raw = localStorage.getItem(THEME_KEY);
+    return raw === "dark" ? "dark" : "light";
+  } catch {
+    return "light";
+  }
+}
+
+//////////////////
+// App function //
+//////////////////
 function App() {
   const [library, setLibrary] = useState<LibraryBook[]>(loadLibrary);
   const [statusFilter, setStatusFilter] = useState<BookStatus | "all">("all");
@@ -28,6 +41,15 @@ function App() {
   );
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
 
+  // themeing states
+  const [theme, setTheme] = useState<"light" | "dark">(loadTheme);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "light");
+    localStorage.setItem(THEME_KEY, theme);
+  },[theme]);
+
+  // persistence
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(library));
   }, [library]);
@@ -97,8 +119,14 @@ function App() {
   }, [library]);
 
   return (
-    <div>
+    <div className="bg-white dark:bg-gray-900 text-black dark:text-white min-h-screen p-4">
       <h1>Book Tracker</h1>
+
+      <button
+        onClick={() => setTheme((t) => (t === "light" ? "dark" : "light"))}
+        className="border px-2 py-1 text-sm">
+        {theme === "light" ? "Dark Mode":"Light Mode"}
+      </button>
 
       <SearchBar
         onAddBook={addBook}
