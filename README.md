@@ -4,7 +4,7 @@ This is a reading tracker built using React and Tailwindcss.
 
 ## Structure
 
-It uses 3 different components within the components folder in root, aside from App.tsx:
+It uses 3 different components within the components folder in src, aside from App.tsx:
 * SearchBar.tsx for searching for books and their information using the Open Library API.
 * BookCard.tsx for generating the user's library.
 * StatsBar.tsx for showing the stats of the user's library.
