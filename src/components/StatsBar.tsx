@@ -26,7 +26,7 @@ export default function StatsBar({
       <Stat label="To Read" value={toRead}/>
       <Stat label="Reading" value={reading}/>
       <Stat label="Finished" value={finished}/>
-      <Stat label="Average Waiting" value={avgRating !== null ? avgRating.toFixed(1):"-----"}/>
+      <Stat label="Average Rating" value={avgRating !== null ? avgRating.toFixed(1):"-----"}/>
     </div>
   );
 }
