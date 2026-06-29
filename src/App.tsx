@@ -45,7 +45,7 @@ function App() {
   const [theme, setTheme] = useState<"light" | "dark">(loadTheme);
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "light");
+    document.documentElement.classList.toggle("dark", theme === "dark");
     localStorage.setItem(THEME_KEY, theme);
   },[theme]);
 
@@ -120,7 +120,7 @@ function App() {
 
   return (
     <div className="bg-white dark:bg-gray-900 text-black dark:text-white min-h-screen p-4">
-      <h1>Book Tracker</h1>
+      <h1 className="text-2xl">Book Tracker</h1>
 
       <button
         onClick={() => setTheme((t) => (t === "light" ? "dark" : "light"))}
@@ -197,7 +197,7 @@ function App() {
             : "No books match this filter"}
         </p>
       ) : (
-        <div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {visibleBooks.map((book) => (
             <BookCard
               key={book.id}
