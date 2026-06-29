@@ -1,33 +1,20 @@
-# React + TypeScript + Vite
+# Assignment 3: Reading Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This is a reading tracker built using React and Tailwindcss.
 
-Currently, two official plugins are available:
+## Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+It uses 3 different components within the components folder in root, aside from App.tsx:
+* SearchBar.tsx for searching for books and their information using the Open Library API.
+* BookCard.tsx for generating the user's library.
+* StatsBar.tsx for showing the stats of the user's library.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+<p>At the top right of the page, there is a switch to turn off and on dark mode.<br><br> 
+In the search bar you can search for books from the Open Library. After typing in a title you hit search and results should show if books are found. If not then no results are shown. If there are results shown and you want to clear out the results to declutter your screen, you can hit the x button inside the search bar.<br><br>    
+Underneath the search bar, there is the stats bar which show the 3 categories of books: books to read, currently being read books, and finished books, as well has the average rating of the finished books.
+<br><br>
+The library itself is contained within App.tsx along with the options to sort between to read, reading and finished. The books can be sorted by date, name, or author. In the library, after books are added, their status can be moved along by going forward or back. They can also be deleted from the library and added back in later. When a book is in the finished state, it can be rated.
+</p>
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
-# reading_tracker
